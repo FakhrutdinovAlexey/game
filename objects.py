@@ -319,8 +319,8 @@ class Player(Actor):
         self.hand = number
 
     def load(self):
-        with open('saves/data2.json') as file:
-            data = json.loads(file)
+        with open('saves/data2.json', 'r') as file:
+            data = json.load(file)
             self.pos_x = data['pos_x']
             self.pos_y = data['pos_y']
             self.H = data['H']
@@ -331,7 +331,7 @@ class Player(Actor):
             self.size = data['size']
 
     def save(self):
-        with open('saves/data1.json') as file:
+        with open('saves/data2.json', 'w') as file:
             json.dump({'pos_x': self.pos_x, 'pos_y': self.pos_y, 'H': self.H, 'hand': self.hand,
                        'inventory': self.inventory, 'plate': self.plate, 'hand_image': self.hand_image,
                        'size': self.size}, file)
@@ -375,13 +375,13 @@ class Backpack:
         return self.slots, self.count, self.backpack_size
                 
     def load(self):
-        with open('saves/data1.json') as file:
-            data = json.loads()
+        with open('saves/data1.json', 'r') as file:
+            data = json.load(file)
             self.slots = data['slots']
             self.count = data['count']
 
     def save(self):
-        with open('saves/data1.json') as file:
+        with open('saves/data1.json', 'w') as file:
             json.dump({'slots': self.slots, 'count': self.count}, file)
 
 

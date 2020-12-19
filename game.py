@@ -289,8 +289,7 @@ class Game:
                 self.player.change_hand(10)
 
             if keys[pygame.K_s]:
-                #self.save()
-                pass
+                self.save()
                     
             if keys[pygame.K_ESCAPE]:
                 pygame.quit()
@@ -301,8 +300,8 @@ class Game:
         pygame.quit()
 
     def load(self):
-        with open('saves/data.json') as file:
-            data = json.loads(file)
+        with open('saves/data.json', 'r') as file:
+            data = json.load(file)
             self.map = data['map']
             self.biome_map = data['biome_map']
             self.SIZE = data['size']
@@ -311,7 +310,7 @@ class Game:
 
     def save(self):
         with open('saves/data.json', 'w') as file:
-            print(dict({'map': list(self.map), 'biome_map': list(self.biome_map), 'size': self.SIZE}))
-            json.dump(dict({'map': list(self.map), 'biome_map': list(self.biome_map), 'size': self.SIZE}), file)
+            print(dict({'map': self.map.tolist(), 'biome_map': self.biome_map.tolist(), 'size': self.SIZE}))
+            json.dump(dict({'map': self.map.tolist(), 'biome_map': self.biome_map.tolist(), 'size': self.SIZE}), file)
             self.player.save()
             self.backpack.save()
