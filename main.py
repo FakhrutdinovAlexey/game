@@ -132,7 +132,10 @@ class Menu:
                     if x > self.BUTTON_X and x < self.BUTTON_SIZE_X + self.BUTTON_X:
                         if (y > self.BUTTON_Y + self.BUTTON_SIZE_Y*1 
                             and y < self.BUTTON_Y + self.BUTTON_SIZE_Y*(1 + 1)):
-                            pass
+                            pygame.quit()
+                            game = Game(self.SEED, self.map_size, self.volume)
+                            game.load()
+                            game.main()
                     # SETTINGS
                     if x > self.BUTTON_X and x < self.BUTTON_SIZE_X + self.BUTTON_X:
                         if (y > self.BUTTON_Y + self.BUTTON_SIZE_Y*2 
