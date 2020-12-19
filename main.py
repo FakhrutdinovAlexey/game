@@ -205,9 +205,7 @@ class Menu:
             
             
             pygame.display.update()
-            
-
-
+           
 
 
 menu = Menu()
